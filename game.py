@@ -68,7 +68,6 @@ class Person:
         choice = int(input("Choose target: ")) - 1
         return choice
 
-
     def get_enemy_stats(self):
         HP_bar = ""
         bar_thicks = self.HP/self.max_HP*50

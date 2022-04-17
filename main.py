@@ -4,26 +4,26 @@ from game import Person, bcolors
 from magic import Spell
 from inventory import Item
 
-fire = Spell("Fire", 25, 600, "Black Magic")
-thunder = Spell("Thunder", 25, 600, "Black Magic")
+fire     = Spell("Fire", 25, 600, "Black Magic")
+thunder  = Spell("Thunder", 25, 600, "Black Magic")
 blizzard = Spell("Blizzard", 25, 600, "Black Magic")
-meteor = Spell("Meteor", 50, 1200, "Black Magic")
-quake = Spell("Quake", 35, 740, "Black Magic")
+meteor   = Spell("Meteor", 50, 1200, "Black Magic")
+quake    = Spell("Quake", 35, 740, "Black Magic")
 
-cure = Spell("Cure", 25, 620, "White Magic")
-cura = Spell("Cura", 35, 1500, "White Magic")
+cure   = Spell("Cure", 25, 620, "White Magic")
+cura   = Spell("Cura", 35, 1500, "White Magic")
 curaga = Spell("Curaga", 50, 6000, "White Magic")
 
-potion = Item("Potion", "potion", "Heals 50 HP", 50)
-HI_potion = Item("HI-Potion", "potion", "Heals 100 HP", 100)
+potion       = Item("Potion", "potion", "Heals 50 HP", 50)
+HI_potion    = Item("HI-Potion", "potion", "Heals 100 HP", 100)
 super_potion = Item("Super Potion", "potion", "Heals 1000 HP", 1000)
-elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
-HI_elixer = Item("Mega Elixer", "elixer", "Fully restores party's HP/MP", 9999)
+elixer       = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
+HI_elixer    = Item("Mega Elixer", "elixer", "Fully restores party's HP/MP", 9999)
 
 grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
 
 player_magic = [fire, thunder, blizzard, meteor, quake, cure, cura]
-enemy_magic = [fire, meteor, curaga]
+enemy_magic  = [fire, meteor, curaga]
 player_items = [{"item": potion, "quantity": 15}, {"item": HI_potion, "quantity": 5}, 
                 {"item": super_potion, "quantity": 5}, {"item": elixer, "quantity": 5}, 
                 {"item": HI_elixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
@@ -31,14 +31,13 @@ player_items = [{"item": potion, "quantity": 15}, {"item": HI_potion, "quantity"
 player_1 = Person("Predator", 3260, 132, 300, 34, player_magic, player_items)
 player_2 = Person("Tommy", 4160, 188, 311, 34, player_magic, player_items)
 player_3 = Person("Claude", 3089, 174, 288, 34, player_magic, player_items)
+
 enemy_1 = Person("Tars ", 5250, 130, 560, 325, enemy_magic, [])
 enemy_2 = Person("Magus", 18200, 701, 525, 25, enemy_magic, [])
 enemy_3 = Person("Goran", 5250, 130, 560, 325, enemy_magic, [])
 
 players = [player_1, player_2, player_3]
 enemies = [enemy_1, enemy_2, enemy_3]
-
-running = True
 
 def format_names():
     max_player_name_length = 0
@@ -55,6 +54,7 @@ def format_names():
         enemy.name += " "*(max_enemy_name_length - len(enemy.name))
 
 if __name__ == "__main__":
+    running = True
     format_names()
     print(bcolors.FAIL + bcolors.BOLD + "Enemy attacks!" + bcolors.ENDC)
     while running:
