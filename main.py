@@ -35,7 +35,7 @@ player_2 = Person("Tommy", 4160, 188, 311, 34, player_magic, player_items)
 player_3 = Person("Claude", 3089, 174, 288, 34, player_magic, player_items)
 
 enemy_1 = Person("Tars ", 5250, 130, 560, 325, enemy_magic, [])
-enemy_2 = Person("Magus", 10200, 701, 525, 25, enemy_magic, [])
+enemy_2 = Person("Magus", 18200, 701, 525, 25, enemy_magic, [])
 enemy_3 = Person("Goran", 5250, 130, 560, 325, enemy_magic, [])
 
 players = [player_1, player_2, player_3]
