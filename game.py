@@ -76,15 +76,15 @@ class Person:
             bar_thicks -= 1
         while len(HP_bar) < 50:
             HP_bar += " "
-        print("                     __________________________________________________")
+        print(" "*(len(self.name) + 3 + 2*5 + 1 + 2) + "_"*50)
         print(bcolors.BOLD + self.name + "   " + 
               "%5d/%5d" % (self.HP, self.max_HP) + " |" + bcolors.FAIL + HP_bar + bcolors.ENDC + bcolors.BOLD + "|")
 
-    def get_stats(self):
+    def get_player_stats(self):
         HP_bar = ""
         MP_bar = ""
-        HP_bar_ticks = self.HP/self.max_HP*25
-        MP_bar_thicks = self.magic_points/self.max_magic_points*10
+        HP_bar_ticks = round(self.HP/self.max_HP*25)
+        MP_bar_thicks = round(self.magic_points/self.max_magic_points*10)
         while HP_bar_ticks > 0:
             HP_bar += "█"
             HP_bar_ticks -= 1
@@ -95,7 +95,7 @@ class Person:
             MP_bar_thicks -= 1
         while len(MP_bar) < 10:
             MP_bar += " "
-        print("                       _________________________              __________")
+        print(" "*(len(self.name) + 3 + 2*4 + 1 + 2) + "_"*25 + " "*(5 + 2*3 + 1 + 2) + "_"*10)
         print(bcolors.BOLD + self.name + "   " + 
               "%4d/%4d" % (self.HP, self.max_HP) + " |" + bcolors.OKGREEN + HP_bar + bcolors.ENDC + bcolors.BOLD + "|    " + 
               "%3d/%3d" % (self.magic_points, self.max_magic_points) + " |" + bcolors.OKBLUE + MP_bar + bcolors.ENDC + "|")
@@ -104,7 +104,7 @@ class Person:
         magic_choice = random.randrange(0, len(self.magic))
         spell = self.magic[magic_choice]
         magic_damage = spell.generate_damage()
-        if self.magic_points < spell.cost or spell.typ == "White Magic" and self.HP/self.max_HP*100 > 50:
-            self.choose_enemy_spell()
-        else:
-            return spell, magic_damage
+        # if self.magic_points < spell.cost or spell.typ == "White Magic" and self.HP/self.max_HP*100 > 50:
+        #     self.choose_enemy_spell()
+        # else:
+        return spell, magic_damage
