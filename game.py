@@ -38,49 +38,31 @@ class Person:
         self.HP +=damage
         if self.HP > self.max_HP:
             self.HP = self.max_HP
-        
-    def get_HP(self):
-        return self.HP
-    
-    def get_max_HP(self):
-        return self.max_HP
-    
-    def get_magic_points(self):
-        return self.magic_points
-
-    def get_max_magic_points(self):
-        return self.max_magic_points
 
     def reduce_magic_points(self, cost):
         self.magic_points -=cost
 
     def choose_action(self):
-        i = 1
-        print("\n    " + bcolors.BOLD + bcolors.UNDERLINE + self.name + bcolors.ENDC)
+        print("\n    " + bcolors.BOLD + bcolors.UNDERLINE + self.name.replace(" ", "") + bcolors.ENDC)
         print(bcolors.OKGREEN + bcolors.BOLD + "ACTIONS:" + bcolors.ENDC)
-        for item in self.actions:
-            print("    " + str(i) + ".", item)
-            i +=1
+        for item_number, item in enumerate(self.actions, 1):
+            print("    " + str(item_number) + ".", item)
 
     def choose_magic(self):
-        i = 1
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "MAGIC:" + bcolors.ENDC)
-        for spell in self.magic:
-            print("    " + str(i) + ".", spell.name, "(cost: ", str(spell.cost) + ")")
-            i +=1
+        for spell_number, spell in enumerate(self.magic, 1):
+            print("    " + str(spell_number) + ".", spell.name, "(cost: ", str(spell.cost) + ")")
 
     def choose_item(self):
-        i = 1
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "ITEMS:" + bcolors.ENDC)
-        for item in self.items:
-            print("    " + str(i) + ".", item["item"].name +  ": ", str(item["item"].description) + "(x" + str(item["quantity"]) + ")")
-            i +=1
+        for item_number, item in enumerate(self.items, 1):
+            print("    " + str(item_number) + ".", item["item"].name +  ": ", str(item["item"].description) + "(x" + str(item["quantity"]) + ")")
 
     def choose_target(self, enemies):
-        i = 1
         print("\n" + bcolors.FAIL + bcolors.BOLD + "TARGET:" + bcolors.ENDC)
+        i = 1
         for enemy in enemies:
-            if enemy.get_HP() != 0:
+            if enemy.HP != 0:
                 print("    " + str(i) + ".", enemy.name)
                 i += 1
         choice = int(input("Choose target: ")) - 1
@@ -123,7 +105,7 @@ class Person:
         magic_choice = random.randrange(0, len(self.magic))
         spell = self.magic[magic_choice]
         magic_damage = spell.generate_damage()
-        if self.magic_points < spell.cost or spell.typ == "white" and self.HP/self.max_HP*100 > 50:
+        if self.magic_points < spell.cost or spell.typ == "White Magic" and self.HP/self.max_HP*100 > 50:
             self.choose_enemy_spell()
         else:
             return spell, magic_damage
