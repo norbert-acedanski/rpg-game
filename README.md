@@ -9,7 +9,7 @@ Python 3.9.10
 
 # Getting started
 
-### Working with document-statistics:
+### Working with rpg-game:
 1. Run the script.
 2. Enjoy the fight!
 
