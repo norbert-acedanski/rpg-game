@@ -1,7 +1,7 @@
 # rpg-game
 
 # About The Project
-A simple RPG game, where group of 3 heroes fights 3 enemies with positons, magic and attacks.  
+A simple RPG game, where group of 3 heroes fights 3 enemies with positions, magic and attacks.  
 For now it only works in the terminal.
 
 # Built With
