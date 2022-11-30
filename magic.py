@@ -1,5 +1,6 @@
 import random
 
+
 class Spell:
     def __init__(self, name, cost, damage, typ):
         self.name = name

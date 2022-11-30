@@ -1,5 +1,6 @@
 import random
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -9,6 +10,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
 
 class Person:
 
@@ -35,12 +37,12 @@ class Person:
         return self.HP
 
     def heal(self, damage):
-        self.HP +=damage
+        self.HP += damage
         if self.HP > self.max_HP:
             self.HP = self.max_HP
 
     def reduce_magic_points(self, cost):
-        self.magic_points -=cost
+        self.magic_points -= cost
 
     def choose_action(self):
         print("\n    " + bcolors.BOLD + bcolors.UNDERLINE + self.name.replace(" ", "") + bcolors.ENDC)
@@ -51,12 +53,12 @@ class Person:
     def choose_magic(self):
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "MAGIC:" + bcolors.ENDC)
         for spell_number, spell in enumerate(self.magic, 1):
-            print("    " + str(spell_number) + ".", spell.name, "(cost: ", str(spell.cost) + ")")
+            print(f"    {spell_number}. {spell.name} (cost: {spell.cost})")
 
     def choose_item(self):
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "ITEMS:" + bcolors.ENDC)
         for item_number, item in enumerate(self.items, 1):
-            print("    " + str(item_number) + ".", item["item"].name +  ": ", str(item["item"].description) + "(x" + str(item["quantity"]) + ")")
+            print(f'    {item_number}. {item["item"].name}: {item["item"].description} (x{item["quantity"]}')
 
     def choose_target(self, enemies):
         print("\n" + bcolors.FAIL + bcolors.BOLD + "TARGET:" + bcolors.ENDC)
